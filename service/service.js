@@ -22,7 +22,7 @@ class AppService {
         return User.find({});
     }
 
-    createUser(data){
+    async createUser(data){
         const user = new User();
         user.email = data.email;
         user.host = data.host;
@@ -39,11 +39,15 @@ class AppService {
     }
 
     removeUserByEmail(email){
-        const data = users.filter(user => user.email !== email);
-        users = data;
-        return data; 
+        return User.findOneAndRemove({email});
+        // const data = users.filter(user => user.email !== email);
+        // users = data;
+        // return data; 
     }
 
+    filterUserByEmail(email){
+        return User.find({});
+    }
     // updateData(req,res){
     //     return res.status(200).json({});
     // }

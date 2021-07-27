@@ -4,14 +4,17 @@ const service = new AppService();
 
 class AppController{
 
-    createUser(req,res){
-        // return service.createUser(req.body).then();
-       return service.createUser(req.body)
-        .then(data => {
-            res.status(200).json(data);
-        }).catch(err => {
+    async createUser(req,res){
+        try{
+            const data = await service.createUser(req.body);
+            res.status(200).send({
+                'message':'user created successfully',
+                data
+            });    
+        }catch(err){
             res.status(500).send(err);
-        });
+        }
+
     }
 
     getUsers(req,res){
@@ -32,10 +35,8 @@ class AppController{
 
     getUsersByEmail(req,res){
         return  service.getUsersByEmail(req.params.email).then(data => {
-            // res.status(200).send(data);
-            
             res.status(200).send({
-                'message':'data fetched',
+                "message":"required data fetched",
                 data
             });
         }).catch(err => {
@@ -44,9 +45,17 @@ class AppController{
         });
     }
 
-    removeUserByEmail(req,res){
-        const data  = service.getUsersByEmail(req.params.email);
-        res.status(200).json(data);
+    filterUserByEmail(req,res){
+        const flag = (req.query.email === 'true'?true:false);
+        return  service.getUsersByEmail(flag).then(data => {
+            res.status(200).send({
+                'message':'user removed successfully',
+                data
+            });
+        }).catch(err => {
+            // catch optional
+            res.status(500).send(err);
+        });
     }
 
     // updateData(req,res){
