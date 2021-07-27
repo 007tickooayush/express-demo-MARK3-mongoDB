@@ -15,5 +15,5 @@ class CartService {
     }
 }
 
-// exporting AppService class
+// exporting CartService class
 module.exports = CartService;

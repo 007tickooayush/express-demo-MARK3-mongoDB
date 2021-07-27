@@ -5,6 +5,7 @@ const service = new CartService();
 class CartController{
 
     async createCart(req,res){
+
         try{
             const data = await service.createCart(req.body);
             res.status(200).send({
@@ -33,5 +34,5 @@ class CartController{
     }
 }
 
-// exporting AppController class
+// exporting CartController class
 module.exports = CartController;

@@ -1,5 +1,3 @@
-// var Schema = mongoose.Schema;
-
 const mongoose = require('mongoose');
 
 let Schema = mongoose.Schema;
