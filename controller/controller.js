@@ -5,13 +5,24 @@ const service = new AppService();
 class AppController{
 
     createUser(req,res){
-        const user = service.createUser(req.body);
-        return res.status(200).json(user);
+        return service.createUser(req.body).then();
+        // return res.status(200).json(user);
     }
 
     getUsers(req,res){
-        const data = service.getUsers();
-        return res.status(200).json(data);
+        return  service.getUsers().then(data => {
+            // res.status(200).send(data);
+            
+            // dummy reponse
+            res.status(200).send({
+                'message':'data fetched',
+                data
+            });
+        }).catch(err => {
+            // catch optional
+            res.status(500).send(err);
+        });
+        // return res.status(200).json(data);
     }
 
     getUsersByEmail(req,res){
