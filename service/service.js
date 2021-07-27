@@ -22,13 +22,20 @@ class AppService {
         return User.find({});
     }
 
-    createUser(user){
-        users.push(user);
-        return user;
+    createUser(data){
+        const user = new User();
+        user.email = data.email;
+        user.host = data.host;
+        user.username = data.username;
+
+        return user.save();
+        // users.push(user);
+        // return user;
     }
 
     getUsersByEmail(email){
-        return users.filter(user => user.email === email);
+        return User.findOne({email});
+        // return users.filter(user => user.email === email);
     }
 
     removeUserByEmail(email){

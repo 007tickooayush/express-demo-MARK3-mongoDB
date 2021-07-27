@@ -2,7 +2,9 @@
 
 const mongoose = require('mongoose');
 
-const UserModelSchema = new mongoose.Schema({
+let Schema = mongoose.Schema;
+
+const UserModelSchema = new Schema({
     username: {type: String},
     email:{type: String},
     host: {type: String}
