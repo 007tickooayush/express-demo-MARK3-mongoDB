@@ -8,5 +8,4 @@ const UserModelSchema = new mongoose.Schema({
     host: {type: String}
 });
 
-// modeule.exports =
-mongoose.model('User', UserModelSchema);
+module.exports = mongoose.model('User', UserModelSchema);
