@@ -1,3 +1,7 @@
+## install mongoose
+```
+npm install --save mongoose
+```
 
 ## install nodemon for dynamically implementing changes
 ```
